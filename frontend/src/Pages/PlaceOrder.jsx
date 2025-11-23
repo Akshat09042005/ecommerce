@@ -7,7 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const PlaceOrder = () => {
-  const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
+  const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, userId } = useContext(ShopContext);
   const [method, setMethod] = useState("cod");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -48,6 +48,7 @@ const PlaceOrder = () => {
         items: orderItems,
         address: formData,
         amount: getCartAmount() + delivery_fee,
+        userId,
       };
 
       switch (method) {

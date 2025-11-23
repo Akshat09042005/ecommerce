@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const Orders = () => {
-  const { backendUrl, currency, token } = useContext(ShopContext);
+  const { backendUrl, currency, token, userId } = useContext(ShopContext);
   const [orderData, setorderData] = useState([]);
 
   const getAllOrdersData = async () => {
@@ -14,9 +14,8 @@ const Orders = () => {
         return null;
       }
 
-      const res = await axios.post(backendUrl + "/api/order/userorders",{}, {headers: { token }});
-      
-      
+      const res = await axios.post(backendUrl + "/api/order/userorders",{ userId }, { headers: { token } });
+
       if (res.data.success) {
         let allOrderItems = [];
         res.data.orders.map((order) => {
