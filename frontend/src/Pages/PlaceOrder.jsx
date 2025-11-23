@@ -225,7 +225,6 @@ const PlaceOrder = () => {
           <button
             type='submit'
             className='bg-black text-white px-16 py-3 text-sm'
-            onClick={()=>navigate('/orders')}
           >
             PLACE ORDER
           </button>
